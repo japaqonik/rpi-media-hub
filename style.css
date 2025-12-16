@@ -41,6 +41,12 @@ body {
     margin-bottom: 50px;
 }
 
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Odstęp między zegarem a ikoną ustawień */
+}
+
 .app-header h1 {
     font-size: var(--font-size-header);
     font-weight: 300;
@@ -48,6 +54,27 @@ body {
 
 .app-header p {
     font-size: var(--font-size-tile-title);
+}
+
+/* --- Nowe style dla ikony Ustawień --- */
+.settings-icon {
+    text-decoration: none;
+    color: var(--color-text-primary);
+    transition: all 0.2s ease-out;
+    outline: none;
+}
+
+.settings-icon .icon {
+    font-size: var(--font-size-header); /* Duża, widoczna ikona */
+    display: block; /* Aby animacja działała poprawnie */
+}
+
+/* Efekty Focusu/Hover dla ikony Ustawień */
+.settings-icon:focus,
+.settings-icon:hover {
+    color: var(--color-highlight);
+    /* Subtelny obrót dla efektu "trybika" */
+    transform: rotate(30deg) scale(1.1);
 }
 
 /* --- 4. Układ Grid (Kluczowy dla kafelków) --- */
