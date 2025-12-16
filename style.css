@@ -1,0 +1,112 @@
+/* --- 1. Zmienne CSS (Dark Mode Configuration) --- */
+:root {
+    /* Kolory podstawowe */
+    --color-background-primary: #121212;
+    --color-background-secondary: #1f1f1f;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #a0a0a0;
+    
+    /* Akcent / Focus */
+    --color-highlight: #ff6600;
+    --color-shadow-focus: rgba(255, 102, 0, 0.6);
+    
+    /* Fonty dla 4K (duże) */
+    --font-size-header: 4rem;
+    --font-size-tile-title: 3rem;
+    --font-size-tile-subtitle: 1.5rem;
+}
+
+/* --- 2. Ustawienia globalne i reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+    font-family: 'Arial', sans-serif;
+    padding: 50px; /* Margines wokół treści */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- 3. Header --- */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.app-header h1 {
+    font-size: var(--font-size-header);
+    font-weight: 300;
+}
+
+.app-header p {
+    font-size: var(--font-size-tile-title);
+}
+
+/* --- 4. Układ Grid (Kluczowy dla kafelków) --- */
+.grid-container {
+    display: grid;
+    /* Tworzy 3 kolumny o równych rozmiarach, automatycznie dostosowując wysokość wierszy */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px; /* Przestrzeń między kafelkami */
+    flex-grow: 1; /* Rozciąga grid na resztę dostępnego miejsca */
+    align-content: start; /* Utrzymuje zawartość u góry */
+}
+
+/* --- 5. Style kafelka (.tile) --- */
+.tile {
+    /* Kafelki są linkami, więc resetujemy domyślne style */
+    text-decoration: none;
+    color: var(--color-text-primary);
+    
+    /* Wygląd */
+    background-color: var(--color-background-secondary);
+    border-radius: 20px;
+    padding: 50px;
+    
+    /* Ułożenie treści wewnątrz kafelka (pionowo) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    /* Animacje (przygotowanie na Focus/Hover) */
+    transition: all 0.2s ease-out;
+    outline: none; /* Ukrywa domyślną ramkę focusu przeglądarki */
+}
+
+.tile .icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.tile h2 {
+    font-size: var(--font-size-tile-title);
+    margin-bottom: 10px;
+}
+
+.tile p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-tile-subtitle);
+}
+
+/* --- 6. Efekty interakcji (Kluczowe dla pilota) --- */
+
+/* Efekt dla aktywnego/sfokusowanego kafelka */
+.tile:focus,
+.tile:hover {
+    /* 1. Skalowanie: Delikatny zoom na kafelku */
+    transform: scale(1.05);
+    
+    /* 2. Podświetlenie: Subtelny cień jako wskaźnik fokusu */
+    box-shadow: 0 0 25px var(--color-shadow-focus);
+    
+    /* 3. Kolor tła: Lekkie rozjaśnienie/zmiana koloru */
+    background-color: #2a2a2a;
+}
