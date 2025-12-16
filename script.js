@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tiles = document.querySelectorAll('.tile[tabindex="0"]');
+    // SELEKTOR ZMIENIONY: Szukamy tylko elementów 'a' z klasą 'tile'
+    const tiles = document.querySelectorAll('.tile[tabindex="0"]'); 
     const tileArray = Array.from(tiles);
     let focusedIndex = 0;
 
@@ -57,6 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     // fetch(`http://localhost:8080/launch?url=${encodeURIComponent(targetUrl)}`);
                 }
                 return; // Nie przesuwaj focusu po Enter
+        }
+
+        // Obsługa otwierania ustawień np. klawiszem 'Menu' lub F1/F2
+        // Przykładowo, jeśli pilot ma dedykowany klawisz:
+        if (e.key === 'F1' || e.key === 'Menu') {
+             const settingsUrl = document.getElementById('settings-icon').dataset.url;
+             console.log(`Wysyłanie żądania uruchomienia ustawień: ${settingsUrl}`);
+             e.preventDefault();
+             return;
         }
         
         // Zabezpieczenie indeksu i ustawienie focusu
